@@ -27,14 +27,14 @@ public interface IRestBehaviorStore extends IRestVersionInfo {
             @ApiImplicitParam(name = "limit", format = "integer", example = "<how many results should be returned>")})
     @ApiResponse(code = 200, response = DocumentDescriptor.class, responseContainer = "List",
             message = "Array of DocumentDescriptors")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON, "text/yaml"})
     List<DocumentDescriptor> readBehaviorDescriptors(@QueryParam("filter") @DefaultValue("") String filter,
                                                      @QueryParam("index") @DefaultValue("0") Integer index,
                                                      @QueryParam("limit") @DefaultValue("20") Integer limit);
 
     @GET
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON, "text/yaml"})
     BehaviorConfiguration readBehaviorRuleSet(@PathParam("id") String id,
                                               @ApiParam(name = "version", required = true, format = "integer", example = "1")
                                  @QueryParam("version") Integer version);

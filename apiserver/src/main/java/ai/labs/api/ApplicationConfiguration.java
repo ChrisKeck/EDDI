@@ -7,6 +7,7 @@ import ai.labs.server.JacksonConfig;
 import ai.labs.server.exception.IllegalArgumentExceptionMapper;
 import ai.labs.server.providers.URIMessageBodyProvider;
 import ai.labs.staticresources.impl.interceptor.ContentTypeInterceptor;
+import org.jboss.resteasy.plugins.providers.YamlProvider;
 
 import javax.ws.rs.core.Application;
 import java.util.Collections;
@@ -29,6 +30,7 @@ public class ApplicationConfiguration extends Application {
         tmp.add(IllegalArgumentExceptionMapper.class);
         tmp.add(JacksonConfig.class);
         tmp.add(URIMessageBodyProvider.class);
+        tmp.add(YamlProvider.class);
 
         CLASSES = Collections.unmodifiableSet(tmp);
     }
