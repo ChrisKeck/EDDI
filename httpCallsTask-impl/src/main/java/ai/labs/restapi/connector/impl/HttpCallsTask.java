@@ -160,6 +160,13 @@ public class HttpCallsTask implements ILifecycleTask {
             IData<Context> contextData = dataFactory.createData("context:quickReplies", context);
             memory.getCurrentStep().storeData(contextData);
         }
+
+        if (templateDataObjects.get("eddicontext") != null) {
+            Context context = new Context(Context.ContextType.string, templateDataObjects.get("eddicontext"));
+            memory.getCurrentStep().storeData(dataFactory.createData("context", context)) ;
+        }
+
+
     }
 
     private IRequest buildRequest(String targetUri, String requestBody, Request requestConfig, Map<String, Object> templateDataObjects) throws ITemplatingEngine.TemplateEngineException {
